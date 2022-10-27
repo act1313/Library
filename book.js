@@ -25,27 +25,26 @@ function addBookToLibrary() {
 
     let book = new Book(title, author, pages, readStatus);
     book.info();
+    
+    addBook(book);
 }
 
-function addBook(books) {
-    for (let i = 0; i < books; i++) 
-    {
-        let book = document.createElement('div');
-        book.classList.add('book');
-        bookContainer.appendChild(book);
-    }
-    let booksInLibrary = document.querySelectorAll('.book');
+function addBook(bookInfo) {
+    let book = document.createElement('div');
+    book.classList.add('book');
 
+    book.innerHTML =
+
+    bookContainer.appendChild(book);
+
+    let booksInLibrary = document.querySelectorAll('.book');
+    console.log(booksInLibrary.length);
+    
     if (booksInLibrary.length > 3) {
         bookContainer.style.cssText = 
         `
             display: inline-grid;
             grid-template-columns: repeat(3, 1fr);
-            height: 65vh;
-            width: 65vh;
-            border: 10px solid black;
-            border-radius: 25px;
-            background-color: gray;
             gap: 1px;
         `;
     } else {
@@ -53,11 +52,6 @@ function addBook(books) {
         `
             display: inline-grid;
             grid-template-columns: repeat(books.length, 1fr);
-            height: 65vh;
-            width: 65vh;
-            border: 10px solid black;
-            border-radius: 25px;
-            background-color: gray;
             gap: 1px;
         `;
     }
