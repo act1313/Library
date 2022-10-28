@@ -6,6 +6,7 @@ let bookPages = document.querySelector("#pages");
 let bookReadStatus = document.querySelector("#readStatus");
 
 let myLibrary = [];
+let num = 0;
 
 function Book(title, author, pages, readStatus) {
     this.title = title;
@@ -30,12 +31,34 @@ function addBookToLibrary() {
 }
 
 function addBook(bookInfo) {
+    // add the book
     let book = document.createElement('div');
     book.classList.add('book');
-
-    book.innerHTML =
+    book.classList.add(`${num}`);
 
     bookContainer.appendChild(book);
+
+    // add the info to the book
+    let titleOfBook = document.createElement('h1');
+    let authorOfBook = document.createElement('h1');
+    let pagesOfBook = document.createElement('h1');
+    let readBook = document.createElement('h1');
+
+    titleOfBook.innerHTML = `${bookInfo.title}`;
+    authorOfBook.innerHTML = `${bookInfo.author}`;
+    pagesOfBook.innerHTML = `${bookInfo.pages}`;
+
+    if (bookInfo.readStatus == true) {
+        readBook.innerHTML = 'Read';
+    } else {
+        readBook.innerHTML = 'Not Read';
+    }
+
+    // add book info to book element
+    book.appendChild(titleOfBook);
+    book.appendChild(authorOfBook);
+    book.appendChild(pagesOfBook);
+    book.appendChild(readBook);
 
     let booksInLibrary = document.querySelectorAll('.book');
     console.log(booksInLibrary.length);
