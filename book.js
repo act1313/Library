@@ -43,38 +43,44 @@ function addBook(bookInfo) {
     let authorOfBook = document.createElement('h1');
     let pagesOfBook = document.createElement('h1');
     let readBook = document.createElement('h1');
-
+    
     titleOfBook.innerHTML = `${bookInfo.title}`;
     authorOfBook.innerHTML = `${bookInfo.author}`;
     pagesOfBook.innerHTML = `${bookInfo.pages}`;
-
-    if (bookInfo.readStatus == true) {
-        readBook.innerHTML = 'Read';
-    } else {
-        readBook.innerHTML = 'Not Read';
-    }
 
     // add book info to book element
     book.appendChild(titleOfBook);
     book.appendChild(authorOfBook);
     book.appendChild(pagesOfBook);
-    book.appendChild(readBook);
+    
+    var readBookCheck = document.createElement('input');
+    readBookCheck.type = "checkbox";
+    readBookCheck.name = "readBookBox";
+    readBookCheck.id = "readBookBox";
 
+    var label = document.createElement('label')
+    label.htmlFor = "readBookBox";
+    label.appendChild(document.createTextNode('Read'));
+
+    book.appendChild(readBookCheck);
+    book.appendChild(label);
+    
+    
     let booksInLibrary = document.querySelectorAll('.book');
     console.log(booksInLibrary.length);
     
-    if (booksInLibrary.length > 3) {
+    if (booksInLibrary.length <= 3) {
         bookContainer.style.cssText = 
         `
             display: inline-grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(${booksInLibrary.length}, 1fr);
             gap: 1px;
         `;
     } else {
         bookContainer.style.cssText = 
         `
             display: inline-grid;
-            grid-template-columns: repeat(books.length, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 1px;
         `;
     }
