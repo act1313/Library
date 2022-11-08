@@ -71,3 +71,10 @@ table {
 .books {
     flex: 1 0 0%;
 }
+
+.book {
+    display: flex;
+    flex-direction: column;
+    max-width: 10vw;
+    align-items: center;
+}
