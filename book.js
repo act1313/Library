@@ -9,14 +9,17 @@ let myLibrary = [];
 
 let number = 0;
 
-function Book(title, author, pages, readStatus) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.readStatus = readStatus;
-    this.info = () => {
+class Book {
+    constructor(title, author, pages, readStatus) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.readStatus = readStatus;
+    }
+
+    info () {
         console.log(title + " by " + author + ", " + pages + " pages, " + readStatus);
-    };
+    }
 }
 
 function addBookToLibrary() {
